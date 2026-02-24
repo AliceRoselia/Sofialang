@@ -44,6 +44,8 @@ typedef struct primitiveContainer{
   union data_ptr data;
 }primitiveContainer;
 
+primitiveContainer make_dict();
+
 typedef struct dictEntry
 {
 // Not sure if this is necessary yet. It might be possible we can force the primitive dicts to be perfect-hashable or something. We don't know yet.
@@ -102,7 +104,8 @@ void insert_dict(primitiveContainer container, size_t key, primitiveContainer va
 enum instruction_type{
     SofiaGoto,
     SofiaReturn,
-    SofiaCall
+    SofiaCall,
+    PrimitiveCall
 };
 
 typedef struct SofiaInstruction
@@ -130,18 +133,31 @@ primitiveContainer interpret(primitiveContainer src, primitiveContainer context)
         insert_dict(context,lookup_scalar(lookup_dict(srcPtr->src,SOFIA_VAR_KEY)),interpret(lookup_dict(srcPtr->src,SOFIA_SRC),lookup_dict(srcPtr->src,SOFIA_CONTEXT)));
         ++srcPtr;
         break;
+    case PrimitiveCall:
+        insert_dict(context,lookup_scalar(lookup_dict(srcPtr->src,SOFIA_VAR_KEY)),lookup_dict(srcPtr->src,SOFIA_SRC).data.primitiveFunc(lookup_dict(srcPtr->src,SOFIA_CONTEXT)));
+        ++srcPtr;
+        break;
     }
     }
 
-    primitiveContainer placeHolder;
+    primitiveContainer placeHolder = make_dict();
     return placeHolder;
 }
 
+primitiveContainer make_dict(){
+    primitiveContainer ans;
+    ans.size = 0;
+    ans.data.literal = 0;
+    return ans;
+}
 
 
 int main(){
     char* SOFIA_MEMORY = (char*)(malloc(32*1024*1024)); //32 MB of memory.
     char* SOFIA_CURRENT_MEMORY = SOFIA_MEMORY;
+
+    primitiveContainer GLOBAL_SOFIA_CONTEXT = make_dict();
+
 
     printf("Compilation passed");
     //This is the template for everything.

@@ -1,0 +1,21 @@
+
+
+
+function println(str)
+    primitive print(str)
+    primitive print("\n")
+end
+
+
+
+println("Hello world.")
+
+
+
+i = 0
+
+
+
+while i < 5
+    println(i)
+end
