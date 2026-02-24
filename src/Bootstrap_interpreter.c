@@ -22,17 +22,18 @@ union data_ptr
   size_t* scalar;
   struct dictEntry* values;
   struct primitiveContainer* container;
-  struct primitiveContainer (*func) (struct primitiveContainer);
+  struct primitiveContainer (*primitiveFunc) (struct primitiveContainer); //For "primitive" and jit-compiled functions.
 };
 
 
-struct primitiveContainer{
+typedef struct primitiveContainer{
   // Primitive string, array, or dict.
   // Assume a dict unless shown otherwise.
   //
   size_t size;
   union data_ptr data;
-};
+}primitiveContainer;
+
 
 
 
