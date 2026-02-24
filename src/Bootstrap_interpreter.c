@@ -151,6 +151,20 @@ primitiveContainer make_dict(){
     return ans;
 }
 
+primitiveContainer parse_sofia(char* src){
+    size_t lines = 1;
+    for (char* i = src; *i != '\0'; ++i)
+    {
+        if (*i == '\n' || *i == ';')
+            ++lines;
+    }
+    primitiveContainer src_out;
+    src_out.size = lines;
+    src_out.data.scalar = Sofia_malloc(lines*sizeof(SofiaInstruction));
+
+    return src_out;
+}
+
 
 int main(){
     char* SOFIA_MEMORY = (char*)(malloc(32*1024*1024)); //32 MB of memory.
