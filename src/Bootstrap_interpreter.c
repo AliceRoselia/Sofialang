@@ -37,6 +37,15 @@ typedef struct primitiveContainer{
 //A primitive container is assumed to be a dict.
 //Its "type" argument will tell you what its other slots contain.
 
+size_t lookup_dict(primitiveContainer container, size_t key)
+{
+    for (size_t i=0; i<container.size; ++i)
+    {
+        if (container.data.values[i].key == key)
+            return container.data.values[i].value;
+    }
+};
+
 
 
 
