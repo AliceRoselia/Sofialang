@@ -46,7 +46,26 @@ size_t lookup_dict(primitiveContainer container, size_t key)
     }
 };
 
+// A silly dict. This is a bootstrap implementation so perhaps we won't optimize this.
 
+enum instruction_type{
+    SofiaGoto,
+    SofiaReturn,
+    SofiaCall
+};
+
+typedef struct SofiaInstruction
+{
+    primitiveContainer src;
+    enum instruction_type type;
+}SofiaInstruction;
+
+
+void interpret(primitiveContainer src, primitiveContainer context)
+{
+
+    size_t srcPtr = 0;
+}
 
 
 
