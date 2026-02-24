@@ -19,7 +19,7 @@ size_t value;
 // size_t would be used as raw bytes for numbers.
 union data_ptr
 {
-  size_t* scalar;
+  char* scalar;
   struct dictEntry* values;
   struct primitiveContainer* container;
   struct primitiveContainer (*primitiveFunc) (struct primitiveContainer); //For "primitive" and jit-compiled functions.
