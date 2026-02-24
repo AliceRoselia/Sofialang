@@ -34,6 +34,10 @@ typedef struct primitiveContainer{
   union data_ptr data;
 }primitiveContainer;
 
+//A primitive container is assumed to be a dict.
+//Its "type" argument will tell you what its other slots contain.
+
+
 
 
 
