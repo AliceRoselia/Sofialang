@@ -153,11 +153,15 @@ primitiveContainer make_dict(){
 
 primitiveContainer parse_sofia(char* src){
     size_t lines = 1;
-    for (char* i = src; *i != '\0'; ++i)
+    char* i;
+    for (i = src; *i != '\0'; ++i)
     {
         if (*i == '\n' || *i == ';')
             ++lines;
     }
+    size_t buffer = i-src;
+
+
     primitiveContainer src_out;
     src_out.size = lines;
     src_out.data.scalar = Sofia_malloc(lines*sizeof(SofiaInstruction));
