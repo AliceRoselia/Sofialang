@@ -151,6 +151,8 @@ primitiveContainer make_dict(){
     return ans;
 }
 
+
+/*
 primitiveContainer parse_sofia(char* src){
     size_t lines = 1;
     char* i;
@@ -161,13 +163,18 @@ primitiveContainer parse_sofia(char* src){
     }
     size_t buffer = i-src;
 
+    char* tempStack = Sofia_malloc(sizeof(char)*buffer);
+    char* curPos = tempStack;
+
+
 
     primitiveContainer src_out;
-    src_out.size = lines;
-    src_out.data.scalar = Sofia_malloc(lines*sizeof(SofiaInstruction));
+    //src_out.size = lines;
+    //src_out.data.scalar = Sofia_malloc(lines*sizeof(SofiaInstruction));
 
     return src_out;
 }
+*/
 
 
 int main(){
