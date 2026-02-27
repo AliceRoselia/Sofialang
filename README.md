@@ -1,3 +1,5 @@
+Update: My first attempt officially failed. I am still not good enough at handling complex system. I will return.
+
 Sofia language is based on this trifecta.
 
 Sofia supports a kind of metaprogramming called interpreter metaprogramming where you interpret any code using a custom interpreter. Now, unlike macros, which only know the syntax of the expressions, interpreters know the functions called, how they were implemented, the runtime type and value, and so on. The idea is that you write the interpreter that interprets Sofia in a nonstandard way.
