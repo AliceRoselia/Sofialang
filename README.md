@@ -145,6 +145,8 @@ If there is no escaping object, then the memory region is sufficient. However, r
 
 The first version wouldn't ship with these optimizations, just the basics. The optimizations would be in the libraries.
 
+The exact detail depends on what memory management domain you use but this is my draft for the "normal" one.
+
 Addendum 3: concurrency and parallelism.
 
 Sofia is a compute-bound programming language. For such tasks, for each stage, the task is either fully independent, or dependent in the dynamic programming sense, both of which can be modeled through dependency analysis. 
@@ -166,7 +168,7 @@ Interfaces with other processes are done through channels or events (producer-co
 
 Interfaces with shared memory in different processes are done through transaction models. 
 
-Addendum 3: Where does the performance come from? 
+Addendum 4: Where does the performance come from? 
 
 Aside from allowing the compiler to not halt and the structure of the compiler that lets the compiler spend effort on code roughly proportional to the runtime cost of running those code, Sofia has a significant edge against languages like C by exploiting the loose semantics
 
@@ -189,6 +191,11 @@ GC-like semantics that could complicate analysis or leave residual overhead.
 
 However, abstract interpretation minimizes the weaknesses and maximizes the strength.
 
-Addendum 4: 
+Addendum 5: 
 
 I used Futamura projection loosely. More likely, it would simply be optimizing and hoisting out the interpretation overhead and generating code that performs what was determined by the interpreter but in the outer loop or even outside the program execution instead.
+
+Addendum 6: 
+
+While the language looks to be just hoping it would work out, several low-level decisions are made to make this easy. There are three primitive types, raw bytes, dictionary, and unique tags (each one is a singleton elements equal only to itself but can be implemented arbitrarily, eg, as a direct jump offset instead of an indirect jump table).
+Interpreters are to be normally implemented via dispatch table, meaning that Futamura projection is a straightforward rewrite rule.
