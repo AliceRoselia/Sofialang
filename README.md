@@ -86,7 +86,7 @@ combine_proof
 abstract_interp_proof( all(
 isprime(x) || (factorial(N)+1)%x !=0 for x = N to factorial (N)))
 
-# To be proven by residual class reasoning engine. The basic idea is that if not isprime(x), then the residual class of x wrt some i (from 2 to N-1) is zero. The residual class of factorial(N)+1 wrt to i is always 1. 
+#To be proven by residual class reasoning engine. The basic idea is that if not isprime(x), then the residual class of x wrt some i (from 2 to N-1) is zero. The residual class of factorial(N)+1 wrt to i is always 1. 
 Modulo by something with residual class wrt i equal 0 doesn't change the residual class wrt i, which means it must be 1.
 
  :
