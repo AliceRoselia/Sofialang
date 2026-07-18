@@ -110,8 +110,6 @@ Sofia language goals.
 -Regularity: Sofia code should not be plagued by special cases, for it harms the programmer, the compiler, and any functional metaprogram such as autograd.
 To be able to compose languages, there should be no need for "json/yaml/etc programming". There should only be Sofia. Whatever DSL you write should be in Sofia. 
 
-
-
 - Elegance: The solution should look clean and natural from the chosen reference frame for anyone familiar with it. We cannot guarantee that you feel that using eigenvalue to analyze loop behavior feels easiest, but we can confidently believe that if you're knowledgeable in Linear Algebra, the solution looks obvious. The user should not be forced to manually translate this obvious definition to something to be executed.
 
 
